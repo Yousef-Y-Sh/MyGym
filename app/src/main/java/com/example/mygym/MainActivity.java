@@ -22,5 +22,6 @@ public class MainActivity extends AppCompatActivity {
         binding.item2.setOnClickListener(view -> {
             Utils._Intent(MainActivity.this, GuideActivity.class);
         });
+
     }
 }

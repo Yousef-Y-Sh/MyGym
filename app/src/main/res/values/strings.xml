@@ -3,4 +3,19 @@
     <string name="don_t_give_up">DON\'T\nGIVE\nUP</string>
     <string name="exercise_guide">دليل التمارين</string>
     <string name="guide">البرامج التدريبية</string>
+    <string name="create_guide">انشاء برنامج</string>
+    <string name="guide_name">اسم البرنامج</string>
+    <string name="guide_weeks">مدة البرنامج بالأسابيع</string>
+    <string name="count_of_day">عدد أيام التدريب</string>
+    <string name="difficulty_of_guide">مستوى البرنامج</string>
+    <string name="first">المستوى المبتدئ</string>
+    <string name="second">المستوى المتوسط</string>
+    <string name="third">المستوى المحترف</string>
+    <string name="guide_status">حالة البرنامج</string>
+
+    <string-array name="array01">
+        <item>بدء التقدم</item>
+        <item>تم انجازه</item>
+        <item>إيقاف البرنامج مؤقتاً</item>
+    </string-array>
 </resources>

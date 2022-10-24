@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="statusBar">#2A2A2A</color>
     <color name="grey">#ACACAC</color>
+    <color name="hintColor">#99000000</color>
+    <color name="selectedColor">#2466D1</color>
+    <color name="parentSelectedColor">#D9E5FE</color>
 </resources>
