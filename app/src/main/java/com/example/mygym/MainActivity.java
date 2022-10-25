@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.example.mygym.Utils.Utils;
 import com.example.mygym.activity.GuideActivity;
+import com.example.mygym.activity.GuideMenuActivity;
 import com.example.mygym.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.item1.setOnClickListener(view -> {
-            Utils._Intent(MainActivity.this, GuideActivity.class);
+            Utils._Intent(MainActivity.this, GuideMenuActivity.class);
         });
         binding.item2.setOnClickListener(view -> {
             Utils._Intent(MainActivity.this, GuideActivity.class);

@@ -54,7 +54,7 @@
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:fontFamily="@font/cario_semi_bold"
-            android:text="0 برنامج"
+            android:text="8 تمارين"
             android:textColor="@color/white"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintStart_toStartOf="@+id/imageView3"
