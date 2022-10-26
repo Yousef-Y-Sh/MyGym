@@ -2,15 +2,28 @@ package com.example.mygym.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.mygym.R;
+import com.example.mygym.Utils.Utils;
+import com.example.mygym.databinding.ActivityGuideMenuBinding;
 
 public class GuideMenuActivity extends AppCompatActivity {
+    ActivityGuideMenuBinding binding;
+    Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guide_menu);
+        binding = ActivityGuideMenuBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        activity = GuideMenuActivity.this;
+        binding.chest.setOnClickListener(view -> Utils._Intent(activity, ChestActivity.class));
+        binding.shoulders.setOnClickListener(view -> Utils._Intent(activity, ShouldersActivity.class));
+        binding.back.setOnClickListener(view -> Utils._Intent(activity, BackActivity.class));
+        binding.triceps.setOnClickListener(view -> Utils._Intent(activity, TricepsActivite.class));
+        binding.legs.setOnClickListener(view -> Utils._Intent(activity, LegsActivity.class));
     }
 }
