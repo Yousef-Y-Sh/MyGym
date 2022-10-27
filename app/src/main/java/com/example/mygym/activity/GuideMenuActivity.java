@@ -23,7 +23,10 @@ public class GuideMenuActivity extends AppCompatActivity {
         binding.chest.setOnClickListener(view -> Utils._Intent(activity, ChestActivity.class));
         binding.shoulders.setOnClickListener(view -> Utils._Intent(activity, ShouldersActivity.class));
         binding.back.setOnClickListener(view -> Utils._Intent(activity, BackActivity.class));
-        binding.triceps.setOnClickListener(view -> Utils._Intent(activity, TricepsActivite.class));
         binding.legs.setOnClickListener(view -> Utils._Intent(activity, LegsActivity.class));
+        binding.stomach.setOnClickListener(view -> Utils._Intent(activity, StomachActivity.class));
+        binding.baycep.setOnClickListener(view -> Utils._Intent(activity, BaycepsActivity.class));
+        binding.triceps.setOnClickListener(view -> Utils._Intent(activity, TricepsActivite.class));
+        binding.forearms.setOnClickListener(view -> Utils._Intent(activity, ForearmsActivity.class));
     }
 }
