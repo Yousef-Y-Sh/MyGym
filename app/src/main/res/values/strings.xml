@@ -12,6 +12,9 @@
     <string name="second">المستوى المتوسط</string>
     <string name="third">المستوى المحترف</string>
     <string name="guide_status">حالة البرنامج</string>
+    <string name="start">بدء التقدم</string>
+    <string name="finish">تم انجازه</string>
+    <string name="pause">ايقاف البرنامج مؤقتا</string>
 
     <string-array name="array01">
         <item>بدء التقدم</item>

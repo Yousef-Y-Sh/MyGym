@@ -12,4 +12,7 @@
     <color name="hintColor">#99000000</color>
     <color name="selectedColor">#2466D1</color>
     <color name="parentSelectedColor">#D9E5FE</color>
+    <color name="clock_color">#F6A538</color>
+    <color name="close_color">#ff0000</color>
+    <color name="finish_color">#00af80</color>
 </resources>

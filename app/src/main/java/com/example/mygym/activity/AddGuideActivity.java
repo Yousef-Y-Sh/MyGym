@@ -25,7 +25,7 @@ public class AddGuideActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.nameOfGuide.requestFocus();
-        String[] content = new String[]{"بدء التقدم", "تم انجازه", "ايقاف البرنامج مؤقتا"};
+        String[] content = new String[]{getString(R.string.start), getString(R.string.finish), getString(R.string.pause)};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item1, content);
         binding.spinner.setAdapter(adapter);
 
