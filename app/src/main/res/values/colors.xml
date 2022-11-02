@@ -7,8 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="statusBar">#2A2A2A</color>
+    <color name="statusBar">#393939</color>
+    <color name="toolbar">#424242</color>
     <color name="grey">#ACACAC</color>
+    <color name="green">#008000</color>
     <color name="hintColor">#99000000</color>
     <color name="selectedColor">#2466D1</color>
     <color name="parentSelectedColor">#D9E5FE</color>

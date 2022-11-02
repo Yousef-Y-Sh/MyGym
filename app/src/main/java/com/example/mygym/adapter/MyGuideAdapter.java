@@ -1,6 +1,8 @@
 package com.example.mygym.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,10 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mygym.R;
+import com.example.mygym.Utils.Utils;
+import com.example.mygym.activity.AddDaysActivity;
+import com.example.mygym.activity.SelectGuideActivity;
+import com.example.mygym.activity.TrainingDaysActivity;
 import com.example.mygym.moudle.MyGuide;
 
 import java.util.ArrayList;
@@ -20,10 +26,10 @@ import java.util.List;
 import java.util.Random;
 
 public class MyGuideAdapter extends RecyclerView.Adapter<MyGuideAdapter.MyViewHolder> {
-    Context context;
+    Activity context;
     ArrayList<MyGuide> list;
 
-    public MyGuideAdapter(Context context, ArrayList<MyGuide> list) {
+    public MyGuideAdapter(Activity context, ArrayList<MyGuide> list) {
         this.context = context;
         this.list = list;
     }
@@ -41,7 +47,7 @@ public class MyGuideAdapter extends RecyclerView.Adapter<MyGuideAdapter.MyViewHo
         MyGuide myGuide = list.get(position);
         holder.cover.setImageResource(myGuide.getCover());
         holder.difficulty.setText(myGuide.difficulty);
-        holder.tvTime.setText(myGuide.getTime() + "");
+        holder.tvTime.setText(myGuide.getTime() + " أسابيع");
         holder.title.setText(myGuide.getName());
         //status code
         {
@@ -49,7 +55,7 @@ public class MyGuideAdapter extends RecyclerView.Adapter<MyGuideAdapter.MyViewHo
                 holder.clockImg.setVisibility(View.VISIBLE);
                 holder.closeImg.setVisibility(View.GONE);
                 holder.finishImg.setVisibility(View.GONE);
-                holder.tvState.setText(myGuide.status);
+                holder.tvState.setText(R.string.continue_progress);
                 holder.tvState.setTextColor(context.getColor(R.color.clock_color));
             } else if (myGuide.status.equals(context.getString(R.string.finish))) {
                 holder.clockImg.setVisibility(View.GONE);
@@ -61,7 +67,7 @@ public class MyGuideAdapter extends RecyclerView.Adapter<MyGuideAdapter.MyViewHo
                 holder.clockImg.setVisibility(View.GONE);
                 holder.closeImg.setVisibility(View.VISIBLE);
                 holder.finishImg.setVisibility(View.GONE);
-                holder.tvState.setText(myGuide.status);
+                holder.tvState.setText(R.string.pause_now);
                 holder.tvState.setTextColor(context.getColor(R.color.close_color));
             }
         }
@@ -89,6 +95,12 @@ public class MyGuideAdapter extends RecyclerView.Adapter<MyGuideAdapter.MyViewHo
                 holder.elec5.setImageResource(R.drawable.electric_selected);
                 holder.elec6.setImageResource(R.drawable.electric_selected);
             }
+            holder.itemView.setOnClickListener(view -> {
+                Intent intent = new Intent(context, TrainingDaysActivity.class);
+                intent.putExtra("object", list.get(holder.getAdapterPosition()));
+                context.startActivity(intent);
+
+            });
         }
     }
 

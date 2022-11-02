@@ -3,6 +3,7 @@ package com.example.mygym.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -20,13 +21,61 @@ public class GuideMenuActivity extends AppCompatActivity {
         binding = ActivityGuideMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         activity = GuideMenuActivity.this;
-        binding.chest.setOnClickListener(view -> Utils._Intent(activity, ChestActivity.class));
-        binding.shoulders.setOnClickListener(view -> Utils._Intent(activity, ShouldersActivity.class));
-        binding.back.setOnClickListener(view -> Utils._Intent(activity, BackActivity.class));
-        binding.legs.setOnClickListener(view -> Utils._Intent(activity, LegsActivity.class));
-        binding.stomach.setOnClickListener(view -> Utils._Intent(activity, StomachActivity.class));
-        binding.baycep.setOnClickListener(view -> Utils._Intent(activity, BaycepsActivity.class));
-        binding.triceps.setOnClickListener(view -> Utils._Intent(activity, TricepsActivite.class));
-        binding.forearms.setOnClickListener(view -> Utils._Intent(activity, ForearmsActivity.class));
+        binding.toolbar.title.setText("دليل التمارين");
+        binding.toolbar.backImg.setOnClickListener(view -> {
+            finish();
+        });
+
+        binding.chest.setOnClickListener(view -> {
+            Intent intent = new Intent(activity, ExerciseGuideActivity.class);
+            intent.putExtra("title", Utils._GetText(binding.chestTV));
+            intent.putExtra("type", Utils.__CHESTGUIDS);
+            startActivity(intent);
+        });
+
+        binding.shoulders.setOnClickListener(view -> {
+            Intent intent = new Intent(activity, ExerciseGuideActivity.class);
+            intent.putExtra("title", Utils._GetText(binding.shouldersTV));
+            intent.putExtra("type", Utils.__SHOULDERSGUIDS);
+            startActivity(intent);
+        });
+
+        binding.back.setOnClickListener(view -> {
+            Intent intent = new Intent(activity, ExerciseGuideActivity.class);
+            intent.putExtra("title", Utils._GetText(binding.backTV));
+            intent.putExtra("type", Utils.__BACKGUIDS);
+            startActivity(intent);
+        });
+        binding.legs.setOnClickListener(view -> {
+            Intent intent = new Intent(activity, ExerciseGuideActivity.class);
+            intent.putExtra("title", Utils._GetText(binding.legsTV));
+            intent.putExtra("type", Utils.__LEGSGUIDS);
+            startActivity(intent);
+        });
+
+        binding.stomach.setOnClickListener(view -> {
+            Intent intent = new Intent(activity, ExerciseGuideActivity.class);
+            intent.putExtra("title", Utils._GetText(binding.stomachTV));
+            intent.putExtra("type", Utils.__STOMACHGUIDS);
+            startActivity(intent);
+        });
+        binding.baycep.setOnClickListener(view -> {
+            Intent intent = new Intent(activity, ExerciseGuideActivity.class);
+            intent.putExtra("title", Utils._GetText(binding.baycepTV));
+            intent.putExtra("type", Utils.__BAYCEPSGUIDS);
+            startActivity(intent);
+        });
+        binding.triceps.setOnClickListener(view -> {
+            Intent intent = new Intent(activity, ExerciseGuideActivity.class);
+            intent.putExtra("title", Utils._GetText(binding.tricepsTV));
+            intent.putExtra("type", Utils.__TRICEPSGUIDS);
+            startActivity(intent);
+        });
+        binding.forearms.setOnClickListener(view -> {
+            Intent intent = new Intent(activity, ExerciseGuideActivity.class);
+            intent.putExtra("title", Utils._GetText(binding.forearmsTV));
+            intent.putExtra("type", Utils.__FOREAMRMSGUIDS);
+            startActivity(intent);
+        });
     }
 }

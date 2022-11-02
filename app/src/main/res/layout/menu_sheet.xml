@@ -1,34 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:fillViewport="true"
-    tools:context=".activity.GuideMenuActivity">
+    android:background="@color/white">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_12ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+            android:layout_margin="16dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/chest"
@@ -56,11 +43,10 @@
                         app:srcCompat="@drawable/sader" />
 
                     <TextView
-                        android:id="@+id/chestTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cario_semi_bold"
-                        android:text="@string/chest"
+                        android:text="تمارين الصدر"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_18ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -97,11 +83,10 @@
                         app:srcCompat="@drawable/ketef" />
 
                     <TextView
-                        android:id="@+id/shouldersTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cario_semi_bold"
-                        android:text="@string/soulder"
+                        android:text="تمارين الأكتاف"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_18ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -138,11 +123,10 @@
                         app:srcCompat="@drawable/daher" />
 
                     <TextView
-                        android:id="@+id/backTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cario_semi_bold"
-                        android:text="@string/back"
+                        android:text="تمارين الظهر"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_18ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -179,11 +163,10 @@
                         app:srcCompat="@drawable/leg" />
 
                     <TextView
-                        android:id="@+id/legsTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cario_semi_bold"
-                        android:text="@string/leg"
+                        android:text="تمارين الأرجل"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_18ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -220,11 +203,10 @@
                         app:srcCompat="@drawable/meda" />
 
                     <TextView
-                        android:id="@+id/stomachTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cario_semi_bold"
-                        android:text="@string/stomach"
+                        android:text="تمارين المعدة"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_18ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -261,11 +243,10 @@
                         app:srcCompat="@drawable/bay" />
 
                     <TextView
-                        android:id="@+id/baycepTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cario_semi_bold"
-                        android:text="@string/baysep"
+                        android:text="تمارين البايسبس"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_18ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -302,11 +283,10 @@
                         app:srcCompat="@drawable/tray" />
 
                     <TextView
-                        android:id="@+id/tricepsTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cario_semi_bold"
-                        android:text="@string/trycep"
+                        android:text="تمارين الترايسبس"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_18ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -343,11 +323,10 @@
                         app:srcCompat="@drawable/sawaed" />
 
                     <TextView
-                        android:id="@+id/forearmsTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cario_semi_bold"
-                        android:text="@string/formar"
+                        android:text="تمارين السواعد"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_18ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -365,5 +344,5 @@
                 app:layout_constraintTop_toBottomOf="@+id/forearms" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

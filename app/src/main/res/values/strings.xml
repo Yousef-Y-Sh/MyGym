@@ -15,6 +15,16 @@
     <string name="start">بدء التقدم</string>
     <string name="finish">تم انجازه</string>
     <string name="pause">ايقاف البرنامج مؤقتا</string>
+    <string name="continue_progress">جاري التقدم</string>
+    <string name="pause_now">متوقف مؤقتاً</string>
+    <string name="soulder">تمارين الأكتاف</string>
+    <string name="chest">تمارين الصدر</string>
+    <string name="back">تمارين الظهر</string>
+    <string name="leg">تمارين الأرجل</string>
+    <string name="stomach">تمارين المعدة</string>
+    <string name="baysep">تمارين البايسبس</string>
+    <string name="trycep">تمارين الترايسبس</string>
+    <string name="formar">تمارين السواعد</string>
 
     <string-array name="array01">
         <item>بدء التقدم</item>
