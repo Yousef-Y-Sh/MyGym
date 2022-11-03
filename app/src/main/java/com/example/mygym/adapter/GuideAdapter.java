@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mygym.R;
 import com.example.mygym.moudle.Guide;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class GuideAdapter extends RecyclerView.Adapter<GuideAdapter.MyViewHolder> {
     Context context;
-    ArrayList<Guide> list;
+    List<Guide> list;
 
-    public GuideAdapter(Context context, ArrayList<Guide> list) {
+    public GuideAdapter(Context context, List<Guide> list) {
         this.context = context;
         this.list = list;
     }

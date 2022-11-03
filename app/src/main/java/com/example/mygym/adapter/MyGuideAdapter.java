@@ -15,21 +15,16 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mygym.R;
-import com.example.mygym.Utils.Utils;
-import com.example.mygym.activity.AddDaysActivity;
-import com.example.mygym.activity.SelectGuideActivity;
 import com.example.mygym.activity.TrainingDaysActivity;
 import com.example.mygym.moudle.MyGuide;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class MyGuideAdapter extends RecyclerView.Adapter<MyGuideAdapter.MyViewHolder> {
     Activity context;
-    ArrayList<MyGuide> list;
+    List<MyGuide> list;
 
-    public MyGuideAdapter(Activity context, ArrayList<MyGuide> list) {
+    public MyGuideAdapter(Activity context, List<MyGuide> list) {
         this.context = context;
         this.list = list;
     }
