@@ -12,6 +12,7 @@ import com.example.mygym.databinding.ActivityExerciseGuideBinding;
 import com.example.mygym.moudle.Guide;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExerciseGuideActivity extends AppCompatActivity {
     ActivityExerciseGuideBinding binding;
@@ -55,7 +56,7 @@ public class ExerciseGuideActivity extends AppCompatActivity {
         }
     }
 
-    void inflateItem(ArrayList<Guide> myList) {
+    void inflateItem(List<Guide> myList) {
         String title = bundle.getString("title");
         binding.toolbar.title.setText(title);
         GuideAdapter adapter = new GuideAdapter(getApplicationContext(), myList);

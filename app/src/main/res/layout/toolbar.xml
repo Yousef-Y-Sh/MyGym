@@ -5,10 +5,21 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="?actionBarSize"
-    android:paddingHorizontal="@dimen/_16sdp"
     android:background="@color/toolbar"
     android:gravity="center_vertical"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/_16sdp">
+
+    <TextView
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cario_semi_bold"
+        android:padding="@dimen/_8sdp"
+        android:text="حفظ"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12ssp"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/title"
@@ -22,10 +33,10 @@
 
     <ImageView
         android:id="@+id/backImg"
-        android:padding="@dimen/_8sdp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_16sdp"
+        android:padding="@dimen/_8sdp"
         android:rotation="180"
         android:tint="@color/white"
         app:srcCompat="@drawable/row"

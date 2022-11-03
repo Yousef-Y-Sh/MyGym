@@ -19,14 +19,15 @@ import com.example.mygym.R;
 import com.example.mygym.moudle.Guide;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SelectedGuideAdapter extends RecyclerView.Adapter<SelectedGuideAdapter.MyViewHolder> {
     Context context;
-    ArrayList<Guide> list;
+    List<Guide> list;
     ImageButton imageButton;
     int counter = 0;
 
-    public SelectedGuideAdapter(Context context, ArrayList<Guide> list, ImageButton imageButton) {
+    public SelectedGuideAdapter(Context context, List<Guide> list, ImageButton imageButton) {
         this.context = context;
         this.list = list;
         this.imageButton = imageButton;
@@ -79,8 +80,8 @@ public class SelectedGuideAdapter extends RecyclerView.Adapter<SelectedGuideAdap
         return counter;
     }
 
-    public ArrayList<Guide> getSelectedItem() {
-        ArrayList<Guide> selectedItem = new ArrayList<>();
+    public List<Guide> getSelectedItem() {
+        List<Guide> selectedItem = new ArrayList<>();
         for (Guide guide : list) {
             if (guide.isSelected) {
                 selectedItem.add(guide);

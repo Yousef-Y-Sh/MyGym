@@ -13,13 +13,13 @@ import com.example.mygym.database.MyDataBase;
 import com.example.mygym.databinding.ActivityGuideBinding;
 import com.example.mygym.moudle.MyGuide;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Collections;
 
 public class GuideActivity extends AppCompatActivity {
     ActivityGuideBinding binding;
     MyDataBase db;
-    ArrayList<MyGuide> list;
+    List<MyGuide> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class GuideActivity extends AppCompatActivity {
 
     }
 
-    public void _bubbleSort(ArrayList<MyGuide> movies) {
+    public void _bubbleSort(List<MyGuide> movies) {
         for (int a = 1; a < movies.size(); a++) {
             for (int b = 0; b < movies.size() - a; b++) {
                 if (((movies.get(b).getId()) < ((movies.get(b + 1).getId())))) {
