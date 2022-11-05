@@ -84,6 +84,9 @@ public class AddDayActivity extends AppCompatActivity implements View.OnClickLis
                 flag = false;
             }
             for (Guide guide : selectedList) {
+                guide.setDayTitle(Utils._GetText(binding.nameOfDay));
+                guide.setIdParent(idDayParent);
+                guide.setSelected(false);
                 boolean res = db.INSERT_MY_GUIDE(guide);
                 if (!res) flag = false;
             }
@@ -94,6 +97,10 @@ public class AddDayActivity extends AppCompatActivity implements View.OnClickLis
                 dissbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        Intent intent = new Intent(AddDayActivity.this, TrainingDaysActivity.class);
+                        intent.putExtra("object", guideParent);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
                         finish();
                     }
                 });

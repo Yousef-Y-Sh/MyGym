@@ -17,7 +17,7 @@ import java.util.List;
 
 public class MyDataBase extends SQLiteOpenHelper {
     final static String DB_NAME = "gym_db";
-    final static int DB_VERSION = 2;
+    final static int DB_VERSION = 5;
     // gym_table
     final static String TABLE_NAME = "Gym_TB";
     final static String TABLE_ID = "id";
@@ -161,7 +161,7 @@ public class MyDataBase extends SQLiteOpenHelper {
         values.put(GUIDE_ID_PARENT, guide.getIdParent());
         values.put(GUIDE_TITLE, guide.getTitle());
         values.put(GUIDE_IMAGE, guide.getImage());
-        values.put(GUIDE_DAY, guide.getDay());
+        values.put(GUIDE_DAY, guide.getDayTitle());
         values.put(GUIDE_TYPE, guide.getType());
         long result = sqLiteDatabase.insert(GUIDE_NAME, null, values);
         return result != -1;
@@ -173,7 +173,7 @@ public class MyDataBase extends SQLiteOpenHelper {
         values.put(GUIDE_ID_PARENT, guide.getIdParent());
         values.put(GUIDE_TITLE, guide.getTitle());
         values.put(GUIDE_IMAGE, guide.getImage());
-        values.put(GUIDE_DAY, guide.getDay());
+        values.put(GUIDE_DAY, guide.getDayTitle());
         values.put(GUIDE_TYPE, guide.getType());
 
         String args[] = {guide.getId() + ""};
@@ -188,7 +188,7 @@ public class MyDataBase extends SQLiteOpenHelper {
         return res != -1;
     }
 
-    public List<Guide> GET_ALL_MY_GUIDES(int idParent, int selectDay) {
+    public List<Guide> GET_ALL_MY_GUIDES(int idParent, String selectDay) {
         List<Guide> list = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         String args[] = {idParent + "", selectDay + ""};
@@ -258,7 +258,7 @@ public class MyDataBase extends SQLiteOpenHelper {
         List<Day> list = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         String args[] = {parentID + ""};
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + DAY_NAME + " WHERE " + DAY_ID + " =?", args);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + DAY_NAME + " WHERE " + DAY_ID_PARENT + " =?", args);
         if (cursor.moveToFirst()) {
             do {
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow(DAY_ID));

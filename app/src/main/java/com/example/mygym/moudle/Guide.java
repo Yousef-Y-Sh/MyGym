@@ -65,30 +65,6 @@ public class Guide implements Parcelable {
         this.id = id;
     }
 
-    public String getDay() {
-        return dayTitle;
-    }
-
-    public void setDay(String dayTitle) {
-        this.dayTitle = dayTitle;
-    }
-
-    public int getIdParent() {
-        return idParent;
-    }
-
-    public void setIdParent(int idParent) {
-        this.idParent = idParent;
-    }
-
-    public boolean isSelected() {
-        return isSelected;
-    }
-
-    public void setSelected(boolean selected) {
-        isSelected = selected;
-    }
-
     public int getImage() {
         return image;
     }
@@ -105,6 +81,14 @@ public class Guide implements Parcelable {
         this.title = title;
     }
 
+    public int getIdParent() {
+        return idParent;
+    }
+
+    public void setIdParent(int idParent) {
+        this.idParent = idParent;
+    }
+
     public String getDayTitle() {
         return dayTitle;
     }
@@ -119,6 +103,14 @@ public class Guide implements Parcelable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 
     @Override
