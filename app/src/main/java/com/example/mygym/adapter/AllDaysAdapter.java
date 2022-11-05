@@ -1,10 +1,13 @@
 package com.example.mygym.adapter;
 
 import android.app.Activity;
+import android.media.Image;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -65,6 +68,25 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                 holder.imgOpen.setText("عرض");
             }
         });
+        holder.option.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(activity, holder.option);
+                popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.delete:
+
+                                break;
+                        }
+                        return true;
+                    }
+                });
+                popup.show();
+            }
+        });
     }
 
     @Override
@@ -77,6 +99,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
         private TextView imgOpen;
         private TextView title;
         private RecyclerView recycleItem;
+        private ImageView option;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,6 +107,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
             imgOpen = (TextView) itemView.findViewById(R.id.imgOpen);
             title = (TextView) itemView.findViewById(R.id.title);
             recycleItem = (RecyclerView) itemView.findViewById(R.id.recycleItem);
+            option = (ImageView) itemView.findViewById(R.id.option);
 
         }
     }
