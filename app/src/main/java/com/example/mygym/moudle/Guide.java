@@ -10,12 +10,13 @@ public class Guide implements Parcelable {
     public int idParent;
     public String dayTitle;
     public String type;
-    public boolean isSelected = false;
+    public boolean isSelected;
 
-    public Guide(int image, String title, String type) {
+    public Guide(int image, String title, String type, boolean isSelected) {
         this.image = image;
         this.title = title;
         this.type = type;
+        this.isSelected = isSelected;
     }
 
     public Guide(int image, String title, int idParent, String dayTitle, String type) {

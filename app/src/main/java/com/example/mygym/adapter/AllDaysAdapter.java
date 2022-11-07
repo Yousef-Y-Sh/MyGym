@@ -1,7 +1,8 @@
 package com.example.mygym.adapter;
 
 import android.app.Activity;
-import android.media.Image;
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,22 +17,37 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mygym.R;
+import com.example.mygym.Utils.Utils;
+import com.example.mygym.activity.AddDayActivity;
+import com.example.mygym.activity.TrainingDaysActivity;
 import com.example.mygym.database.MyDataBase;
 import com.example.mygym.moudle.Day;
+import com.example.mygym.moudle.Guide;
+import com.example.mygym.moudle.GuideIntent;
+import com.example.mygym.moudle.MyGuide;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHolder> {
     Activity activity;
     List<Day> list;
     MyDataBase db;
-    boolean flag = false;
+    MyGuide myGuide;
+    boolean flag = true;
+    private GuideAdapter guideAdapter;
+    //////////// inflate alert dialog R.layout.confirm_delete
+    View v;
+    AlertDialog bottomSheetDialog;
+    private TextView disBtn;
+    private TextView deleteBtn;
 
-    public AllDaysAdapter(Activity activity, List<Day> list) {
+    public AllDaysAdapter(Activity activity, List<Day> list, MyGuide myGuide) {
         this.activity = activity;
         this.list = list;
         db = new MyDataBase(activity);
+        this.myGuide = myGuide;
     }
 
     @NonNull
@@ -39,6 +55,10 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
     public AllDaysAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(activity).inflate(R.layout.item_04, parent, false);
         return new MyViewHolder(v);
+    }
+
+    public void setList(List<Day> list) {
+        this.list = list;
     }
 
     @Override
@@ -57,7 +77,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
         holder.constraintLayout2.setOnClickListener(view -> {
             if (!list.get(holder.getAdapterPosition()).isOpen) {
                 list.get(holder.getAdapterPosition()).setOpen(true);
-                GuideAdapter guideAdapter = new GuideAdapter(activity, db.GET_ALL_MY_GUIDES(list.get(holder.getAdapterPosition()).getId(), list.get(holder.getAdapterPosition()).getTitle()));
+                guideAdapter = new GuideAdapter(activity, db.GET_ALL_MY_GUIDES(list.get(holder.getAdapterPosition()).getId(), list.get(holder.getAdapterPosition()).getTitle()));
                 holder.recycleItem.setLayoutManager(new LinearLayoutManager(activity));
                 holder.recycleItem.setAdapter(guideAdapter);
                 holder.recycleItem.setVisibility(View.VISIBLE);
@@ -78,7 +98,40 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
                             case R.id.delete:
+                                Map<String, Object> map = Utils._showDialog(activity, R.layout.confirm_dialog);
+                                v = (View) map.get(Utils.__VIEW);
+                                bottomSheetDialog = (AlertDialog) map.get(Utils.__BOTTOMSHEETDIALOG);
 
+                                deleteBtn = (TextView) v.findViewById(R.id.deleteBtn);
+                                disBtn = (TextView) v.findViewById(R.id.disBtn);
+
+                                deleteBtn.setOnClickListener(view -> {
+                                    for (Guide guide : db.GET_ALL_MY_GUIDES(list.get(holder.getAdapterPosition()).getId(), list.get(holder.getAdapterPosition()).getTitle())) {
+                                        boolean res = db.DELETE_MY_GUIDE(guide.getId());
+                                        if (!res) flag = false;
+
+                                    }
+                                    if (flag) {
+                                        boolean res = db.DELETE_MY_DAY(list.get(holder.getAdapterPosition()).getId(), myGuide.getId());
+                                        if (!res) flag = false;
+                                        if (flag) {
+                                            setList(db.GET_ALL_DAYS(myGuide.getId()));
+                                            notifyDataSetChanged();
+                                            bottomSheetDialog.dismiss();
+                                        }
+                                    }
+                                });
+                                disBtn.setOnClickListener(view -> {
+                                    bottomSheetDialog.dismiss();
+                                });
+                                break;
+                            case R.id.update:
+                                GuideIntent guideIntent = new GuideIntent(db.GET_ALL_MY_GUIDES(list.get(holder.getAdapterPosition()).getId(), list.get(holder.getAdapterPosition()).getTitle()));
+                                Intent intent = new Intent(activity, AddDayActivity.class);
+                                intent.putExtra("object", myGuide);
+                                intent.putExtra("list", guideIntent);
+                                intent.putExtra("day", list.get(holder.getAdapterPosition()));
+                                activity.startActivity(intent);
                                 break;
                         }
                         return true;

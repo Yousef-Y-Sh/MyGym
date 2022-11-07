@@ -9,7 +9,7 @@
     <View
         android:id="@+id/view4"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_200sdp"
+        android:layout_height="@dimen/_250sdp"
         android:layout_marginTop="@dimen/_64sdp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,13 +31,12 @@
         android:id="@+id/imageView2"
         android:layout_width="@dimen/_60sdp"
         android:layout_height="@dimen/_60sdp"
-        android:background="@drawable/circle_avatar_success"
-        android:tint="@color/green"
+        android:background="@drawable/circle_avatar_delete"
         app:layout_constraintBottom_toTopOf="@+id/view4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view4"
-        app:srcCompat="@drawable/ic_baseline_check_24"
+        app:srcCompat="@drawable/ic_baseline_priority_high_24"
         tools:ignore="UseAppTint" />
 
     <TextView
@@ -47,7 +46,7 @@
         android:layout_marginTop="@dimen/_16sdp"
         android:fontFamily="@font/cairo_medum"
         android:gravity="center"
-        android:text="اضافة جدول تدريبي"
+        android:text="حذف يوم تدريبي"
         android:textColor="@color/black"
         android:textSize="@dimen/_16ssp"
         android:textStyle="bold"
@@ -63,7 +62,7 @@
         android:layout_marginTop="@dimen/_8sdp"
         android:fontFamily="@font/cario_semi_bold"
         android:gravity="center"
-        android:text="لقد تم اضافة التدريبات الى يومك التدريبي بنجاح يمكنك الان استعراض جميع تدريباتك بالرجوع للبرامج التدريبية "
+        android:text="أنت على وشك القيام بحذف يومك التدريبي مما يؤدي الى حذف جميع تمارين هذا اليوم"
         android:textColor="@color/black"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,17 +70,33 @@
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
     <TextView
-        android:id="@+id/dissbtn"
+        android:id="@+id/deleteBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/close_color"
+        android:fontFamily="@font/cario_semi_bold"
+        android:gravity="center"
+        android:padding="@dimen/_16sdp"
+        android:text="حذف"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintBottom_toTopOf="@+id/disBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.609"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/disBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/green"
         android:fontFamily="@font/cario_semi_bold"
         android:gravity="center"
         android:padding="@dimen/_16sdp"
-        android:text="استمرار"
+        android:text="رجوع"
         android:textColor="@color/white"
         android:textSize="@dimen/_14ssp"
-        app:layout_constraintBottom_toBottomOf="@+id/view4"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toStartOf="parent" />

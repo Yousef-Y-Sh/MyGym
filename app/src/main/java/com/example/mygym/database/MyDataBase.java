@@ -188,10 +188,10 @@ public class MyDataBase extends SQLiteOpenHelper {
         return res != -1;
     }
 
-    public List<Guide> GET_ALL_MY_GUIDES(int idParent, String selectDay) {
+    public List<Guide> GET_ALL_MY_GUIDES(int dayParent, String selectDay) {
         List<Guide> list = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        String args[] = {idParent + "", selectDay + ""};
+        String args[] = {dayParent + "", selectDay + ""};
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + GUIDE_NAME + " WHERE " + GUIDE_ID_PARENT + " =? AND " + GUIDE_DAY + " =?", args);
         if (cursor.moveToFirst()) {
             do {
@@ -247,10 +247,10 @@ public class MyDataBase extends SQLiteOpenHelper {
         return res > 0;
     }
 
-    public boolean DELETE_MY_DAY(int id) {
+    public boolean DELETE_MY_DAY(int dayID, int idCollection) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        String args[] = {id + ""};
-        long res = sqLiteDatabase.delete(DAY_NAME, "" + DAY_ID + "=?", args);
+        String args[] = {dayID + "", idCollection + ""};
+        long res = sqLiteDatabase.delete(DAY_NAME, "" + DAY_ID + "=? AND " + DAY_ID_PARENT + " =?", args);
         return res != -1;
     }
 

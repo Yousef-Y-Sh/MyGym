@@ -25,7 +25,6 @@ public class SelectedGuideAdapter extends RecyclerView.Adapter<SelectedGuideAdap
     Context context;
     List<Guide> list;
     ImageButton imageButton;
-    int counter = 0;
 
     public SelectedGuideAdapter(Context context, List<Guide> list, ImageButton imageButton) {
         this.context = context;
@@ -47,48 +46,13 @@ public class SelectedGuideAdapter extends RecyclerView.Adapter<SelectedGuideAdap
         holder.id.setText((position + 1) + "");
         if (list.get(holder.getAdapterPosition()).isSelected) {
             holder.imgSelect.setVisibility(View.VISIBLE);
-            imageButton.setVisibility(View.VISIBLE);
+            if (imageButton.getVisibility() != View.VISIBLE)
+                imageButton.setVisibility(View.VISIBLE);
         } else holder.imgSelect.setVisibility(View.GONE);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (list.get(holder.getAdapterPosition()).isSelected) {
-                    list.get(holder.getAdapterPosition()).setSelected(false);
-                    holder.imgSelect.setVisibility(View.GONE);
-                } else {
-                    list.get(holder.getAdapterPosition()).setSelected(true);
-                    holder.imgSelect.setVisibility(View.VISIBLE);
-                }
-                if (getSelectedCount() != 0) {
-                    imageButton.setVisibility(View.VISIBLE);
-                } else {
-                    imageButton.setVisibility(View.GONE);
-                }
-            }
-        });
 
     }
 
-    public int getSelectedCount() {
-        counter = 0;
-        for (Guide guide : list) {
-            if (guide.isSelected) {
-                counter += 1;
-            }
-        }
-        return counter;
-    }
-
-    public List<Guide> getSelectedItem() {
-        List<Guide> selectedItem = new ArrayList<>();
-        for (Guide guide : list) {
-            if (guide.isSelected) {
-                selectedItem.add(guide);
-            }
-        }
-        return selectedItem;
-    }
 
     @Override
     public int getItemCount() {
