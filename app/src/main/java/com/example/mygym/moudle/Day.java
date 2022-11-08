@@ -5,25 +5,25 @@ import android.os.Parcelable;
 
 public class Day implements Parcelable {
     int id;
-    int idParent;
+    int collectionID;
     String title;
     public boolean isOpen = false;
 
-    public Day(String title, int idParent) {
+    public Day(String title, int collectionID) {
         this.title = title;
-        this.idParent = idParent;
+        this.collectionID = collectionID;
     }
 
-    public Day(int id, int idParent, String title) {
+    public Day(int id, int collectionID, String title) {
         this.id = id;
         this.title = title;
-        this.idParent = idParent;
+        this.collectionID = collectionID;
     }
 
 
     protected Day(Parcel in) {
         id = in.readInt();
-        idParent = in.readInt();
+        collectionID = in.readInt();
         title = in.readString();
         isOpen = in.readByte() != 0;
     }
@@ -48,12 +48,12 @@ public class Day implements Parcelable {
         isOpen = open;
     }
 
-    public int getIdParent() {
-        return idParent;
+    public int getCollectionID() {
+        return collectionID;
     }
 
-    public void setIdParent(int idParent) {
-        this.idParent = idParent;
+    public void setCollectionID(int idParent) {
+        this.collectionID = idParent;
     }
 
     public int getId() {
@@ -81,7 +81,7 @@ public class Day implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(id);
-        parcel.writeInt(idParent);
+        parcel.writeInt(collectionID);
         parcel.writeString(title);
         parcel.writeByte((byte) (isOpen ? 1 : 0));
     }

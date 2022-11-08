@@ -20,6 +20,9 @@ import com.example.mygym.database.MyDataBase;
 import com.example.mygym.databinding.ActivityAddGuideBinding;
 import com.example.mygym.moudle.MyGuide;
 
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
+
 import java.util.Random;
 
 public class AddGuideActivity extends AppCompatActivity {
@@ -41,6 +44,15 @@ public class AddGuideActivity extends AppCompatActivity {
         String[] content = new String[]{getString(R.string.start), getString(R.string.finish), getString(R.string.pause)};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item1, content);
         binding.spinner.setAdapter(adapter);
+        KeyboardVisibilityEvent.setEventListener(AddGuideActivity.this, new KeyboardVisibilityEventListener() {
+            @Override
+            public void onVisibilityChanged(boolean isOpen) {
+                if (!isOpen) {
+                    binding.nameOfGuide.clearFocus();
+                    binding.periodGuide.clearFocus();
+                }
+            }
+        });
 
         binding.radio1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

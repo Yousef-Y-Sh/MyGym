@@ -25,11 +25,13 @@ public class SelectedGuideAdapter extends RecyclerView.Adapter<SelectedGuideAdap
     Context context;
     List<Guide> list;
     ImageButton imageButton;
+    List<Guide> selectedList;
 
-    public SelectedGuideAdapter(Context context, List<Guide> list, ImageButton imageButton) {
+    public SelectedGuideAdapter(Context context, List<Guide> list, ImageButton imageButton, List<Guide> selectedList) {
         this.context = context;
         this.list = list;
         this.imageButton = imageButton;
+        this.selectedList = selectedList;
     }
 
     @NonNull
@@ -41,18 +43,48 @@ public class SelectedGuideAdapter extends RecyclerView.Adapter<SelectedGuideAdap
 
     @Override
     public void onBindViewHolder(@NonNull SelectedGuideAdapter.MyViewHolder holder, int position) {
-        holder.imgSrc.setImageResource(list.get(position).image);
+        if (getItemSelectedCount() > 0) imageButton.setVisibility(View.VISIBLE);
+        else imageButton.setVisibility(View.GONE);
+        int img = context.getResources().getIdentifier("drawable/" + list.get(position).getImage(), null, context.getPackageName());
+        holder.imgSrc.setImageResource(img);
         holder.title.setText(list.get(position).title);
         holder.id.setText((position + 1) + "");
+
         if (list.get(holder.getAdapterPosition()).isSelected) {
             holder.imgSelect.setVisibility(View.VISIBLE);
-            if (imageButton.getVisibility() != View.VISIBLE)
-                imageButton.setVisibility(View.VISIBLE);
+            imageButton.setVisibility(View.VISIBLE);
         } else holder.imgSelect.setVisibility(View.GONE);
 
+        holder.itemView.setOnClickListener(view -> {
+            if (list.get(holder.getAdapterPosition()).isSelected) {
+                list.get(holder.getAdapterPosition()).setSelected(false);
+                holder.imgSelect.setVisibility(View.GONE);
+                if (getItemSelectedCount() == 0) imageButton.setVisibility(View.GONE);
+            } else {
+                list.get(holder.getAdapterPosition()).setSelected(true);
+                holder.imgSelect.setVisibility(View.VISIBLE);
+                imageButton.setVisibility(View.VISIBLE);
+            }
+        });
 
     }
 
+
+    public int getItemSelectedCount() {
+        int i = 0;
+        for (Guide guide : list) {
+            if (guide.isSelected) i += 1;
+        }
+        return i;
+    }
+
+    public List<Guide> getItemSelected() {
+        List<Guide> guides = new ArrayList<>();
+        for (Guide guide : list) {
+            if (guide.isSelected) guides.add(guide);
+        }
+        return guides;
+    }
 
     @Override
     public int getItemCount() {

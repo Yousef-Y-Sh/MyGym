@@ -77,7 +77,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
         holder.constraintLayout2.setOnClickListener(view -> {
             if (!list.get(holder.getAdapterPosition()).isOpen) {
                 list.get(holder.getAdapterPosition()).setOpen(true);
-                guideAdapter = new GuideAdapter(activity, db.GET_ALL_MY_GUIDES(list.get(holder.getAdapterPosition()).getId(), list.get(holder.getAdapterPosition()).getTitle()));
+                guideAdapter = new GuideAdapter(activity, db.GET_ALL_MY_GUIDES(list.get(holder.getAdapterPosition()).getId()));
                 holder.recycleItem.setLayoutManager(new LinearLayoutManager(activity));
                 holder.recycleItem.setAdapter(guideAdapter);
                 holder.recycleItem.setVisibility(View.VISIBLE);
@@ -106,7 +106,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                                 disBtn = (TextView) v.findViewById(R.id.disBtn);
 
                                 deleteBtn.setOnClickListener(view -> {
-                                    for (Guide guide : db.GET_ALL_MY_GUIDES(list.get(holder.getAdapterPosition()).getId(), list.get(holder.getAdapterPosition()).getTitle())) {
+                                    for (Guide guide : db.GET_ALL_MY_GUIDES(list.get(holder.getAdapterPosition()).getId())) {
                                         boolean res = db.DELETE_MY_GUIDE(guide.getId());
                                         if (!res) flag = false;
 
@@ -126,7 +126,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                                 });
                                 break;
                             case R.id.update:
-                                GuideIntent guideIntent = new GuideIntent(db.GET_ALL_MY_GUIDES(list.get(holder.getAdapterPosition()).getId(), list.get(holder.getAdapterPosition()).getTitle()));
+                                GuideIntent guideIntent = new GuideIntent(db.GET_ALL_MY_GUIDES(list.get(holder.getAdapterPosition()).getId()));
                                 Intent intent = new Intent(activity, AddDayActivity.class);
                                 intent.putExtra("object", myGuide);
                                 intent.putExtra("list", guideIntent);

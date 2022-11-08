@@ -486,11 +486,11 @@
             android:id="@+id/one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:layout_marginBottom="@dimen/_4sdp"
             android:background="@drawable/item_selected_shape"
             android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="@dimen/_40sdp"
@@ -511,10 +511,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_4sdp"
-            android:visibility="gone"
             android:background="@drawable/item_selected_shape"
             android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="@dimen/_40sdp"
@@ -533,12 +533,12 @@
         <LinearLayout
             android:id="@+id/three"
             android:layout_width="wrap_content"
-            android:visibility="gone"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_4sdp"
             android:background="@drawable/item_selected_shape"
             android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="@dimen/_40sdp"
@@ -556,13 +556,13 @@
 
         <LinearLayout
             android:id="@+id/four"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_4sdp"
             android:background="@drawable/item_selected_shape"
             android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="@dimen/_40sdp"
@@ -580,13 +580,13 @@
 
         <LinearLayout
             android:id="@+id/five"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_4sdp"
             android:background="@drawable/item_selected_shape"
             android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="@dimen/_40sdp"
@@ -604,13 +604,13 @@
 
         <LinearLayout
             android:id="@+id/sex"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_4sdp"
             android:background="@drawable/item_selected_shape"
             android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="@dimen/_40sdp"
@@ -628,13 +628,13 @@
 
         <LinearLayout
             android:id="@+id/seven"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_4sdp"
             android:background="@drawable/item_selected_shape"
             android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="@dimen/_40sdp"
@@ -652,13 +652,13 @@
 
         <LinearLayout
             android:id="@+id/eight"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_4sdp"
             android:background="@drawable/item_selected_shape"
             android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="@dimen/_40sdp"

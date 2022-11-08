@@ -5,43 +5,39 @@ import android.os.Parcelable;
 
 public class Guide implements Parcelable {
     public int id;
-    public int image;
+    public String image;
     public String title;
-    public int idParent;
-    public String dayTitle;
+    public int idDayParent;
     public String type;
     public boolean isSelected;
 
-    public Guide(int image, String title, String type, boolean isSelected) {
+    public Guide(String image, String title, String type, boolean isSelected) {
         this.image = image;
         this.title = title;
         this.type = type;
         this.isSelected = isSelected;
     }
 
-    public Guide(int image, String title, int idParent, String dayTitle, String type) {
+    public Guide(String image, String title, int idParent, String type) {
         this.image = image;
         this.title = title;
-        this.idParent = idParent;
-        this.dayTitle = dayTitle;
+        this.idDayParent = idParent;
         this.type = type;
     }
 
-    public Guide(int id, int image, String title, int idParent, String dayTitle, String type) {
+    public Guide(int id, String image, String title, int idParent, String type) {
         this.id = id;
         this.image = image;
         this.title = title;
-        this.idParent = idParent;
-        this.dayTitle = dayTitle;
+        this.idDayParent = idParent;
         this.type = type;
     }
 
     protected Guide(Parcel in) {
         id = in.readInt();
-        image = in.readInt();
+        image = in.readString();
         title = in.readString();
-        idParent = in.readInt();
-        dayTitle = in.readString();
+        idDayParent = in.readInt();
         type = in.readString();
         isSelected = in.readByte() != 0;
     }
@@ -66,11 +62,11 @@ public class Guide implements Parcelable {
         this.id = id;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -82,21 +78,14 @@ public class Guide implements Parcelable {
         this.title = title;
     }
 
-    public int getIdParent() {
-        return idParent;
+    public int getIdDayParent() {
+        return idDayParent;
     }
 
-    public void setIdParent(int idParent) {
-        this.idParent = idParent;
+    public void setIdDayParent(int idDayParent) {
+        this.idDayParent = idDayParent;
     }
 
-    public String getDayTitle() {
-        return dayTitle;
-    }
-
-    public void setDayTitle(String dayTitle) {
-        this.dayTitle = dayTitle;
-    }
 
     public String getType() {
         return type;
@@ -122,10 +111,9 @@ public class Guide implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(id);
-        parcel.writeInt(image);
+        parcel.writeString(image);
         parcel.writeString(title);
-        parcel.writeInt(idParent);
-        parcel.writeString(dayTitle);
+        parcel.writeInt(idDayParent);
         parcel.writeString(type);
         parcel.writeByte((byte) (isSelected ? 1 : 0));
     }

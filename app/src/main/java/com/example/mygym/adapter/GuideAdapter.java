@@ -1,6 +1,7 @@
 package com.example.mygym.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,15 +28,16 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideAdapter.MyViewHolder
     @NonNull
     @Override
     public GuideAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.item_01,parent,false);
+        View v = LayoutInflater.from(context).inflate(R.layout.item_01, parent, false);
         return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull GuideAdapter.MyViewHolder holder, int position) {
-        holder.imgSrc.setImageResource(list.get(position).image);
+        int img = context.getResources().getIdentifier("drawable/" + list.get(position).getImage(), null, context.getPackageName());
+        holder.imgSrc.setImageResource(img);
         holder.title.setText(list.get(position).title);
-        holder.id.setText((position+1)+"");
+        holder.id.setText((position + 1) + "");
     }
 
     @Override
