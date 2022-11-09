@@ -59,6 +59,7 @@ public class TrainingDaysActivity extends AppCompatActivity {
             AllDaysAdapter adapter = new AllDaysAdapter(TrainingDaysActivity.this, myList, parentCollection);
             binding.recycle.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             binding.recycle.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
         }
     }
 

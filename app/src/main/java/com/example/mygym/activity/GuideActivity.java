@@ -36,7 +36,7 @@ public class GuideActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        list = db.GETALLGUIDES();
+        list = db.GETALLCOLLECTIONS();
         _bubbleSort(list);
         MyGuideAdapter myGuideAdapter = new MyGuideAdapter(GuideActivity.this, list);
         binding.recycleGudie.setLayoutManager(new LinearLayoutManager(this));

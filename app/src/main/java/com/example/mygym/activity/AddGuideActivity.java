@@ -143,7 +143,7 @@ public class AddGuideActivity extends AppCompatActivity {
             Random random = new Random();
             int position = random.nextInt(3);
             MyGuide myGuide = new MyGuide(Utils._GetText(binding.nameOfGuide), Integer.parseInt(Utils._GetText(binding.periodGuide)), radioValue, Utils._GetText(binding.spinner), arr[position]);
-            if (db.INSERT_GUIDE(myGuide)) {
+            if (db.INSERT_COLLECTION(myGuide)) {
                 Utils._Toast(getApplicationContext(), "تم اضافة الجدول بنجاج");
                 finish();
             }

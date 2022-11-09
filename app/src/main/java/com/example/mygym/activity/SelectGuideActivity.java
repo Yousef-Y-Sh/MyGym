@@ -25,6 +25,7 @@ public class SelectGuideActivity extends AppCompatActivity {
     Bundle bundle;
     List<Guide> selectedList;
     private SelectedGuideAdapter selectedGuideAdapter;
+    private boolean falg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,18 +36,19 @@ public class SelectGuideActivity extends AppCompatActivity {
         selectedList = new ArrayList<>();
         binding.toolbar.backImg.setOnClickListener(view -> finish());
 
+
+        if (bundle.getParcelable("list") != null) {
+            GuideIntent guideIntent = bundle.getParcelable("list");
+            selectedList = guideIntent.getList();
+        }
         if (bundle.getString("type") != null) {
             inflateRecycleItem(bundle.getString("type"));
         }
-        if (bundle.getParcelable("list") != null) {
-            GuideIntent guideIntent = bundle.getParcelable("list");
-            selectedList.addAll(guideIntent.getList());
-        }
-
         binding.floating.setOnClickListener(view -> {
             GuideIntent guideIntent = new GuideIntent(selectedGuideAdapter.getItemSelected());
             Intent intent = new Intent();
             intent.putExtra(Utils._DATA, guideIntent);
+            intent.putExtra("type", selectedGuideAdapter.getItemSelected().get(0).getType());
             setResult(RESULT_OK, intent);
             finish();
         });
@@ -91,7 +93,18 @@ public class SelectGuideActivity extends AppCompatActivity {
     }
 
     void setItems(List<Guide> guides) {
-        selectedGuideAdapter = new SelectedGuideAdapter(SelectGuideActivity.this, guides, binding.floating, selectedList);
+        for (int i = 0; i <= guides.size() - 1; i++) {
+            falg = false;
+            for (int j = 0; j <= selectedList.size() - 1; j++) {
+                if (guides.get(i).getImage().equals(selectedList.get(j).getImage())) {
+                    falg = true;
+                }
+            }
+            if (falg) {
+                guides.get(i).setSelected(true);
+            }
+        }
+        selectedGuideAdapter = new SelectedGuideAdapter(SelectGuideActivity.this, guides, binding.floating);
         binding.recycle.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         binding.recycle.setAdapter(selectedGuideAdapter);
     }

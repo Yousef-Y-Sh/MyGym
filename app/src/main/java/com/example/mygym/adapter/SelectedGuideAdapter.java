@@ -25,13 +25,11 @@ public class SelectedGuideAdapter extends RecyclerView.Adapter<SelectedGuideAdap
     Context context;
     List<Guide> list;
     ImageButton imageButton;
-    List<Guide> selectedList;
 
-    public SelectedGuideAdapter(Context context, List<Guide> list, ImageButton imageButton, List<Guide> selectedList) {
+    public SelectedGuideAdapter(Context context, List<Guide> list, ImageButton imageButton) {
         this.context = context;
         this.list = list;
         this.imageButton = imageButton;
-        this.selectedList = selectedList;
     }
 
     @NonNull

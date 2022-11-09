@@ -61,7 +61,7 @@ public class MyDataBase extends SQLiteOpenHelper {
     }
 
     /////////////////////////////////////////////////////////////////////
-    public boolean INSERT_GUIDE(MyGuide guide) {
+    public boolean INSERT_COLLECTION(MyGuide guide) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLLECTION_TITLE, guide.getName());
@@ -73,7 +73,7 @@ public class MyDataBase extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public boolean UPDATE_GUIDE(MyGuide guide) {
+    public boolean UPDATE_COLLECTION(MyGuide guide) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLLECTION_TITLE, guide.getName());
@@ -86,14 +86,14 @@ public class MyDataBase extends SQLiteOpenHelper {
         return res > 0;
     }
 
-    public boolean DELETE_GUIDE(int id) {
+    public boolean DELETE_COLLECTION(int id) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         String args[] = {id + ""};
         long res = sqLiteDatabase.delete(COLLECTION_TABLE_NAME, "" + COLLECTION_ID + "=?", args);
         return res != -1;
     }
 
-    public List<MyGuide> GETALLGUIDES() {
+    public List<MyGuide> GETALLCOLLECTIONS() {
         List<MyGuide> list = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + COLLECTION_TABLE_NAME + "", null);
@@ -113,7 +113,7 @@ public class MyDataBase extends SQLiteOpenHelper {
         return list;
     }
 
-    public MyGuide GETGUIDE(int car) {
+    public MyGuide GETCOLLECTION(int car) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         String args[] = {car + ""};
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + COLLECTION_TABLE_NAME + " WHERE " + COLLECTION_ID + "=?", args);
@@ -132,7 +132,7 @@ public class MyDataBase extends SQLiteOpenHelper {
     }
 
 
-    public List<MyGuide> SEARCHONGUIDE(String text) {
+    public List<MyGuide> SEARCHONCOLLECTION(String text) {
         List<MyGuide> list = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         String args[] = {text + "%"};
@@ -154,7 +154,7 @@ public class MyDataBase extends SQLiteOpenHelper {
     }
 
     /////////////////////////////////////////////////////////////////////
-    public boolean INSERT_MY_GUIDE(Guide guide) {
+    public boolean INSERT_EXECUTE(Guide guide) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(EXECUTE_ID_PARENT, guide.getIdDayParent());
@@ -165,7 +165,7 @@ public class MyDataBase extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public boolean UPDATE_MY_GUIDE(Guide guide) {
+    public boolean UPDATE_EXECUTE(Guide guide) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(EXECUTE_ID_PARENT, guide.getIdDayParent());
@@ -178,14 +178,14 @@ public class MyDataBase extends SQLiteOpenHelper {
         return res > 0;
     }
 
-    public boolean DELETE_MY_GUIDE(int id) {
+    public boolean DELETE_EXECUTE(int id) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         String args[] = {id + ""};
         long res = sqLiteDatabase.delete(EXECUTE_TABLE_NAME, "" + EXECUTE_ID + "=?", args);
         return res != -1;
     }
 
-    public List<Guide> GET_ALL_MY_GUIDES(int dayParent) {
+    public List<Guide> GET_ALL_EXECUTES(int dayParent) {
         List<Guide> list = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         String args[] = {dayParent + ""};
@@ -205,7 +205,7 @@ public class MyDataBase extends SQLiteOpenHelper {
         return list;
     }
 
-    public Guide GET_MY_GUIDE(int ids) {
+    public Guide GET_EXECUTE(int ids) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         String args[] = {ids + ""};
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + EXECUTE_TABLE_NAME + " WHERE " + EXECUTE_ID + "=?", args);

@@ -31,6 +31,6 @@ public class MainActivity extends AppCompatActivity {
         binding.item2.setOnClickListener(view -> {
             Utils._Intent(MainActivity.this, GuideActivity.class);
         });
-        binding.countGuide.setText(db.GETALLGUIDES().size() + " تمارين");
+        binding.countGuide.setText(db.GETALLCOLLECTIONS().size() + " تمارين");
     }
 }

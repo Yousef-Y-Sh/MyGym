@@ -11,6 +11,7 @@ public class Guide implements Parcelable {
     public String type;
     public boolean isSelected;
 
+    //constructor for static list
     public Guide(String image, String title, String type, boolean isSelected) {
         this.image = image;
         this.title = title;
@@ -18,6 +19,7 @@ public class Guide implements Parcelable {
         this.isSelected = isSelected;
     }
 
+    //constructor for insert To data base
     public Guide(String image, String title, int idParent, String type) {
         this.image = image;
         this.title = title;
@@ -25,6 +27,7 @@ public class Guide implements Parcelable {
         this.type = type;
     }
 
+    //constructor for get all data
     public Guide(int id, String image, String title, int idParent, String type) {
         this.id = id;
         this.image = image;
