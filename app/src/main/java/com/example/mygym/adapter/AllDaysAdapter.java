@@ -77,7 +77,7 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
         holder.constraintLayout2.setOnClickListener(view -> {
             if (!list.get(holder.getAdapterPosition()).isOpen) {
                 list.get(holder.getAdapterPosition()).setOpen(true);
-                guideAdapter = new GuideAdapter(activity, db.GET_ALL_EXECUTES(list.get(holder.getAdapterPosition()).getId()));
+                guideAdapter = new GuideAdapter(activity, db.GET_ALL_EXECUTES(list.get(holder.getAdapterPosition()).getId()), true);
                 holder.recycleItem.setLayoutManager(new LinearLayoutManager(activity));
                 holder.recycleItem.setAdapter(guideAdapter);
                 holder.recycleItem.setVisibility(View.VISIBLE);

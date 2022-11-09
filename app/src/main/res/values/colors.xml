@@ -17,4 +17,5 @@
     <color name="clock_color">#F6A538</color>
     <color name="close_color">#ff0000</color>
     <color name="finish_color">#00af80</color>
+    <color name="blue">#289BE8</color>
 </resources>

@@ -4,14 +4,21 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.animation.LayoutTransition;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.inputmethodservice.KeyboardView;
+import android.media.Image;
 import android.os.Bundle;
+import android.text.Layout;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -38,7 +45,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AddDayActivity extends AppCompatActivity {
+public class AddDayActivity extends AppCompatActivity implements View.OnClickListener {
     ActivityAddDayBinding binding;
     Bundle bundle;
     MyGuide parentIntentCollection;
@@ -64,6 +71,14 @@ public class AddDayActivity extends AppCompatActivity {
         bundle = getIntent().getExtras();
         myDataBase = new MyDataBase(this);
         selectedList = new ArrayList<>();
+        binding.one.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        binding.two.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        binding.three.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        binding.four.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        binding.five.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        binding.sex.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        binding.seven.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        binding.eight.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
 
         _BackGuidsList = new ArrayList<>();
         _BaycepsGuidsList = new ArrayList<>();
@@ -200,13 +215,42 @@ public class AddDayActivity extends AppCompatActivity {
             }
             return false;
         });
-
-        KeyboardVisibilityEvent.setEventListener(AddDayActivity.this, new KeyboardVisibilityEventListener() {
-            @Override
-            public void onVisibilityChanged(boolean isOpen) {
-                if (!isOpen) binding.nameOfDay.clearFocus();
-            }
+        KeyboardVisibilityEvent.setEventListener(AddDayActivity.this, isOpen -> {
+            if (!isOpen) binding.nameOfDay.clearFocus();
         });
+        binding.oneImage.setOnClickListener(this);
+        binding.twoImage.setOnClickListener(this);
+        binding.threeImage.setOnClickListener(this);
+        binding.fourImage.setOnClickListener(this);
+        binding.fiveImage.setOnClickListener(this);
+        binding.sexImage.setOnClickListener(this);
+        binding.sevenImage.setOnClickListener(this);
+        binding.eightImage.setOnClickListener(this);
+        binding.oneClick.setOnClickListener(view -> {
+            clearLists(_BackGuidsList, binding.one);
+        });
+        binding.twoClick.setOnClickListener(view -> {
+            clearLists(_BaycepsGuidsList, binding.two);
+        });
+        binding.threeClick.setOnClickListener(view -> {
+            clearLists(_ChestGuidsList, binding.three);
+        });
+        binding.fourClick.setOnClickListener(view -> {
+            clearLists(_ForemarsGuidsList, binding.four);
+        });
+        binding.fiveClick.setOnClickListener(view -> {
+            clearLists(_LegsGuidsList, binding.five);
+        });
+        binding.sexClick.setOnClickListener(view -> {
+            clearLists(_ShouldersGuidsList, binding.sex);
+        });
+        binding.sevenClick.setOnClickListener(view -> {
+            clearLists(_StomashGuidsList, binding.seven);
+        });
+        binding.eightClick.setOnClickListener(view -> {
+            clearLists(_TricepsGuidsList, binding.eight);
+        });
+
     }
 
     private void goIntent(String type, List<Guide> list) {
@@ -316,6 +360,69 @@ public class AddDayActivity extends AppCompatActivity {
                     break;
             }
         }
+
+    }
+
+
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()) {
+            case R.id.oneImage:
+                closeOpenViews(binding.oneClick, binding.one);
+                break;
+            case R.id.twoImage:
+                closeOpenViews(binding.twoClick, binding.two);
+                break;
+            case R.id.threeImage:
+                closeOpenViews(binding.threeClick, binding.three);
+                break;
+            case R.id.fourImage:
+                closeOpenViews(binding.fourClick, binding.four);
+                break;
+            case R.id.fiveImage:
+                closeOpenViews(binding.fiveClick, binding.five);
+                break;
+            case R.id.sexImage:
+                closeOpenViews(binding.sexClick, binding.sex);
+                break;
+            case R.id.sevenImage:
+                closeOpenViews(binding.sevenClick, binding.seven);
+                break;
+            case R.id.eightImage:
+                closeOpenViews(binding.eightClick, binding.eight);
+                break;
+
+        }
+    }
+
+    void closeOpenViews(TextView textView, LinearLayout parent) {
+        ArrayList<TextView> viewsList = new ArrayList<>();
+        viewsList.add(binding.oneClick);
+        viewsList.add(binding.twoClick);
+        viewsList.add(binding.threeClick);
+        viewsList.add(binding.fourClick);
+        viewsList.add(binding.fiveClick);
+        viewsList.add(binding.sexClick);
+        viewsList.add(binding.sevenClick);
+        viewsList.add(binding.eightClick);
+        TransitionManager.beginDelayedTransition(parent, new AutoTransition());
+        if (textView.getVisibility() == View.VISIBLE) {
+            textView.setVisibility(View.GONE);
+        } else {
+            for (TextView view : viewsList) {
+                if (view.getId() == textView.getId()) {
+                    view.setVisibility(View.VISIBLE);
+                } else {
+                    view.setVisibility(View.GONE);
+                }
+            }
+        }
+    }
+
+    void clearLists(List<Guide> list, LinearLayout linearLayout) {
+        list.clear();
+        linearLayout.setVisibility(View.GONE);
 
     }
 }

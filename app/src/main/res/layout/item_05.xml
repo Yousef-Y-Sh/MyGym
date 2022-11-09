@@ -31,7 +31,7 @@
         android:singleLine="true"
         android:text="نسيان"
         android:padding="@dimen/_8sdp"
-        android:textColor="#289BE8"
+        android:textColor="@color/blue"
         android:textSize="@dimen/_10ssp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

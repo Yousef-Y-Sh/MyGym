@@ -35,7 +35,19 @@
             app:layout_constraintEnd_toStartOf="@+id/view"
             app:layout_constraintStart_toEndOf="@+id/imgSrc"
             app:layout_constraintTop_toTopOf="parent" />
-
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cario_semi_bold"
+            android:gravity="start"
+            android:paddingHorizontal="@dimen/_4sdp"
+            android:text="سحب بار قبضة معكوسة"
+            android:visibility="gone"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintEnd_toStartOf="@+id/id"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
         <TextView
             android:id="@+id/id"
             android:layout_width="0dp"

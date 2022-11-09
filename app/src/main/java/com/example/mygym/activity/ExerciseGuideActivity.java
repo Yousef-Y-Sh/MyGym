@@ -59,7 +59,7 @@ public class ExerciseGuideActivity extends AppCompatActivity {
     void inflateItem(List<Guide> myList) {
         String title = bundle.getString("title");
         binding.toolbar.title.setText(title);
-        GuideAdapter adapter = new GuideAdapter(getApplicationContext(), myList);
+        GuideAdapter adapter = new GuideAdapter(getApplicationContext(), myList, false);
         binding.recycle.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         binding.recycle.setAdapter(adapter);
     }

@@ -16,6 +16,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mygym.R;
+import com.example.mygym.Utils.Utils;
 import com.example.mygym.moudle.Guide;
 
 import java.util.ArrayList;
