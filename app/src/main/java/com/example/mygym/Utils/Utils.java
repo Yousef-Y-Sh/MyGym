@@ -157,7 +157,10 @@ public class Utils {
         chestList.add(new Guide("img015", "تمرين هامر بالدامبل سفلي", __CHESTGUIDS, false));
         chestList.add(new Guide("img016", "تمرين الغطس المتوازي", __CHESTGUIDS, false));
         chestList.add(new Guide("img017", "تمرين SVEND PRESS", __CHESTGUIDS, false));
-        chestList.add(new Guide("img018", "تمرين الصدر بالة الضغط", __CHESTGUIDS, false));
+        chestList.add(new Guide("img018", "تمرين الصدر بالة الضغط مستوي", __CHESTGUIDS, false));
+        chestList.add(new Guide("img020", "تمرين الصدر بالة الضغط علوي", __CHESTGUIDS, false));
+        chestList.add(new Guide("img021", "تمرين الصدر بالة الضغط سفي", __CHESTGUIDS, false));
+        chestList.add(new Guide("img019", "تمرين PULL OVER", __CHESTGUIDS, false));
         return chestList;
     }
 
