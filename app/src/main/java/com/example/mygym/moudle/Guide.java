@@ -9,6 +9,7 @@ public class Guide implements Parcelable {
     public String title;
     public int idDayParent;
     public String type;
+    public int position;
     public boolean isSelected;
 
     //constructor for static list
@@ -16,24 +17,28 @@ public class Guide implements Parcelable {
         this.image = image;
         this.title = title;
         this.type = type;
+        this.position = 0;
         this.isSelected = isSelected;
     }
 
     //constructor for insert To data base
-    public Guide(String image, String title, int idParent, String type) {
+    public Guide(String image, String title, int idParent, String type, int position) {
         this.image = image;
         this.title = title;
         this.idDayParent = idParent;
         this.type = type;
+        this.position = position;
+
     }
 
     //constructor for get all data
-    public Guide(int id, String image, String title, int idParent, String type) {
+    public Guide(int id, String image, String title, int idParent, String type, int position) {
         this.id = id;
         this.image = image;
         this.title = title;
         this.idDayParent = idParent;
         this.type = type;
+        this.position = position;
     }
 
     protected Guide(Parcel in) {
@@ -42,7 +47,16 @@ public class Guide implements Parcelable {
         title = in.readString();
         idDayParent = in.readInt();
         type = in.readString();
+        position = in.readInt();
         isSelected = in.readByte() != 0;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public static final Creator<Guide> CREATOR = new Creator<Guide>() {
@@ -118,6 +132,7 @@ public class Guide implements Parcelable {
         parcel.writeString(title);
         parcel.writeInt(idDayParent);
         parcel.writeString(type);
+        parcel.writeInt(position);
         parcel.writeByte((byte) (isSelected ? 1 : 0));
     }
 }

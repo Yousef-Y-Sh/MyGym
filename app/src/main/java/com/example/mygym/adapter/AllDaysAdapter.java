@@ -3,6 +3,7 @@ package com.example.mygym.adapter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mygym.R;
 import com.example.mygym.Utils.Utils;
 import com.example.mygym.activity.AddDayActivity;
+import com.example.mygym.activity.RearrangementActivity;
 import com.example.mygym.activity.TrainingDaysActivity;
 import com.example.mygym.database.MyDataBase;
 import com.example.mygym.moudle.Day;
@@ -27,6 +29,7 @@ import com.example.mygym.moudle.GuideIntent;
 import com.example.mygym.moudle.MyGuide;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -42,6 +45,8 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
     AlertDialog bottomSheetDialog;
     private TextView disBtn;
     private TextView deleteBtn;
+    private GuideIntent guideIntent;
+    private Intent intent;
 
     public AllDaysAdapter(Activity activity, List<Day> list, MyGuide myGuide) {
         this.activity = activity;
@@ -77,7 +82,9 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
         holder.constraintLayout2.setOnClickListener(view -> {
             if (!list.get(holder.getAdapterPosition()).isOpen) {
                 list.get(holder.getAdapterPosition()).setOpen(true);
-                guideAdapter = new GuideAdapter(activity, db.GET_ALL_EXECUTES(list.get(holder.getAdapterPosition()).getId()), true);
+                List<Guide> listGuide = db.GET_ALL_EXECUTES(list.get(holder.getAdapterPosition()).getId());
+                _bubbleSort(listGuide);
+                guideAdapter = new GuideAdapter(activity, listGuide, true);
                 holder.recycleItem.setLayoutManager(new LinearLayoutManager(activity));
                 holder.recycleItem.setAdapter(guideAdapter);
                 holder.recycleItem.setVisibility(View.VISIBLE);
@@ -126,11 +133,17 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
                                 });
                                 break;
                             case R.id.update:
-                                GuideIntent guideIntent = new GuideIntent(db.GET_ALL_EXECUTES(list.get(holder.getAdapterPosition()).getId()));
-                                Intent intent = new Intent(activity, AddDayActivity.class);
+                                guideIntent = new GuideIntent(db.GET_ALL_EXECUTES(list.get(holder.getAdapterPosition()).getId()));
+                                intent = new Intent(activity, AddDayActivity.class);
                                 intent.putExtra("object", myGuide);
                                 intent.putExtra("list", guideIntent);
                                 intent.putExtra("day", list.get(holder.getAdapterPosition()));
+                                activity.startActivity(intent);
+                                break;
+                            case R.id.rearrange:
+                                guideIntent = new GuideIntent(db.GET_ALL_EXECUTES(list.get(holder.getAdapterPosition()).getId()));
+                                intent = new Intent(activity, RearrangementActivity.class);
+                                intent.putExtra("list", guideIntent);
                                 activity.startActivity(intent);
                                 break;
                         }
@@ -161,6 +174,16 @@ public class AllDaysAdapter extends RecyclerView.Adapter<AllDaysAdapter.MyViewHo
             title = (TextView) itemView.findViewById(R.id.title);
             recycleItem = (RecyclerView) itemView.findViewById(R.id.recycleItem);
             option = (ImageView) itemView.findViewById(R.id.option);
+        }
+    }
+
+    public static void _bubbleSort(List<Guide> movies) {
+        for (int a = 1; a < movies.size(); a++) {
+            for (int b = 0; b < movies.size() - a; b++) {
+                if (((movies.get(b).getPosition()) > ((movies.get(b + 1).getPosition())))) {
+                    Collections.swap(movies, b, b + 1);
+                }
+            }
         }
     }
 }

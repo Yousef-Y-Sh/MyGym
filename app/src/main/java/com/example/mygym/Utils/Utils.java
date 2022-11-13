@@ -178,6 +178,7 @@ public class Utils {
         backList.add(new Guide("img00010", "تمرين الحصان", __BACKGUIDS, false));
         backList.add(new Guide("img00011", "تمرين جذب البار", __BACKGUIDS, false));
         backList.add(new Guide("img00012", "تمرين سحب ضيق بالجهاز", __BACKGUIDS, false));
+        backList.add(new Guide("img00022", "تمرين سحب واسع بالجهاز", __BACKGUIDS, false));
         backList.add(new Guide("img00013", "سحب افقي بالكابل", __BACKGUIDS, false));
         backList.add(new Guide("img00014", "سحب متوسط بالكابل", __BACKGUIDS, false));
         backList.add(new Guide("img00015", "تمرين سحب بالدامبل فردي", __BACKGUIDS, false));
@@ -272,6 +273,9 @@ public class Utils {
         shoulderList.add(new Guide("img0021", "تمرين رفرفة بالكابل جانبي", __SHOULDERSGUIDS, false));
         shoulderList.add(new Guide("img0022", "تمرين سحب افقي بالدامبل", __SHOULDERSGUIDS, false));
         shoulderList.add(new Guide("img0023", "تمرين رفرفة بالدامبل خلفي", __SHOULDERSGUIDS, false));
+        shoulderList.add(new Guide("img0024", "تمرين ترابيس بالبار", __SHOULDERSGUIDS, false));
+        shoulderList.add(new Guide("img0025", "تمرين ترابيس بالدامبل", __SHOULDERSGUIDS, false));
+
         return shoulderList;
     }
 

@@ -17,7 +17,7 @@ import java.util.List;
 
 public class MyDataBase extends SQLiteOpenHelper {
     final static String DB_NAME = "gym_db";
-    final static int DB_VERSION = 1;
+    final static int DB_VERSION = 3;
     // COLLECTION ITEM
     final static String COLLECTION_TABLE_NAME = "Gym_TB";
     final static String COLLECTION_ID = "id";
@@ -34,6 +34,7 @@ public class MyDataBase extends SQLiteOpenHelper {
     final static String EXECUTE_TITLE = "title";
     final static String EXECUTE_IMG = "image";
     final static String EXECUTE_TYPE = "type";
+    final static String EXECUTE_POSITION = "position";
 
     //Day_table
     final static String DAY_NAME = "Day_TB";
@@ -48,7 +49,7 @@ public class MyDataBase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + COLLECTION_TABLE_NAME + " (" + COLLECTION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT , " + COLLECTION_TITLE + " TEXT , " + COLLECTION_TIME + " INTEGER , " + COLLECTION_DIFFICULTY + " TEXT," + COLLECTION_STATUS + " TEXT," + COLLECTION_IMG + " INTEGER)");
-        db.execSQL("CREATE TABLE " + EXECUTE_TABLE_NAME + " (" + EXECUTE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," + EXECUTE_ID_PARENT + " INTEGER , " + EXECUTE_TITLE + " TEXT , " + EXECUTE_IMG + " TEXT , " + EXECUTE_TYPE + " TEXT)");
+        db.execSQL("CREATE TABLE " + EXECUTE_TABLE_NAME + " (" + EXECUTE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," + EXECUTE_ID_PARENT + " INTEGER , " + EXECUTE_TITLE + " TEXT , " + EXECUTE_IMG + " TEXT , " + EXECUTE_TYPE + " TEXT , " + EXECUTE_POSITION + " INTEGER )");
         db.execSQL("CREATE TABLE " + DAY_NAME + " (" + DAY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," + DAY_ID_PARENT + " INTEGER ," + DAY_TITLE + " TEXT )");
     }
 
@@ -161,6 +162,7 @@ public class MyDataBase extends SQLiteOpenHelper {
         values.put(EXECUTE_TITLE, guide.getTitle());
         values.put(EXECUTE_IMG, guide.getImage());
         values.put(EXECUTE_TYPE, guide.getType());
+        values.put(EXECUTE_POSITION, guide.getPosition());
         long result = sqLiteDatabase.insert(EXECUTE_TABLE_NAME, null, values);
         return result != -1;
     }
@@ -172,6 +174,7 @@ public class MyDataBase extends SQLiteOpenHelper {
         values.put(EXECUTE_TITLE, guide.getTitle());
         values.put(EXECUTE_IMG, guide.getImage());
         values.put(EXECUTE_TYPE, guide.getType());
+        values.put(EXECUTE_POSITION, guide.getPosition());
 
         String args[] = {guide.getId() + ""};
         long res = sqLiteDatabase.update(EXECUTE_TABLE_NAME, values, "" + EXECUTE_ID + "=?", args);
@@ -197,7 +200,8 @@ public class MyDataBase extends SQLiteOpenHelper {
                 String title = cursor.getString(cursor.getColumnIndexOrThrow(EXECUTE_TITLE));
                 String image = cursor.getString(cursor.getColumnIndexOrThrow(EXECUTE_IMG));
                 String type = cursor.getString(cursor.getColumnIndexOrThrow(EXECUTE_TYPE));
-                Guide myGuide = new Guide(id, image, title, id_Parent, type);
+                int index = cursor.getInt(cursor.getColumnIndexOrThrow(EXECUTE_POSITION));
+                Guide myGuide = new Guide(id, image, title, id_Parent, type, index);
                 list.add(myGuide);
             } while (cursor.moveToNext());
             cursor.close();
@@ -215,7 +219,8 @@ public class MyDataBase extends SQLiteOpenHelper {
             String title = cursor.getString(cursor.getColumnIndexOrThrow(EXECUTE_TITLE));
             String image = cursor.getString(cursor.getColumnIndexOrThrow(EXECUTE_IMG));
             String type = cursor.getString(cursor.getColumnIndexOrThrow(EXECUTE_TYPE));
-            Guide myGuide = new Guide(id, image, title, id_Parent, type);
+            int index = cursor.getInt(cursor.getColumnIndexOrThrow(EXECUTE_POSITION));
+            Guide myGuide = new Guide(id, image, title, id_Parent, type, index);
             cursor.close();
             return myGuide;
         }

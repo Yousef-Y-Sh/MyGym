@@ -20,6 +20,7 @@ import com.example.mygym.moudle.Day;
 import com.example.mygym.moudle.Guide;
 import com.example.mygym.moudle.MyGuide;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -71,5 +72,12 @@ public class TrainingDaysActivity extends AppCompatActivity {
                 inflateRecycle(myDataBase.GET_ALL_DAYS(parentCollectionIntent.id), parentCollectionIntent);
             }
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        inflateRecycle(myDataBase.GET_ALL_DAYS(parentCollectionIntent.id), parentCollectionIntent);
+
     }
 }

@@ -137,8 +137,9 @@ public class AddDayActivity extends AppCompatActivity implements View.OnClickLis
 
                 int dayID = myDataBase.INSERT_DAY(new Day(Utils._GetText(binding.nameOfDay), parentIntentCollection.getId()));
                 for (Guide guide : selectedList) {
-                    if (!myDataBase.INSERT_EXECUTE(new Guide(guide.getImage(), guide.getTitle(), dayID, guide.getType())))
+                    if (!myDataBase.INSERT_EXECUTE(new Guide(guide.getImage(), guide.getTitle(), dayID, guide.getType(), guide.getPosition()))) {
                         isError = false;
+                    }
                 }
                 if (isError) {
                     Map<String, Object> map = Utils._showDialog(AddDayActivity.this, R.layout.complete_add);
@@ -165,10 +166,11 @@ public class AddDayActivity extends AppCompatActivity implements View.OnClickLis
                 }
                 if (isError) {
                     for (Guide guide : selectedList) {
-                        if (!myDataBase.INSERT_EXECUTE(new Guide(guide.getImage(), guide.getTitle(), parentDay.getId(), guide.getType()))) {
+                        if (!myDataBase.INSERT_EXECUTE(new Guide(guide.getImage(), guide.getTitle(), parentDay.getId(), guide.getType(), guide.getPosition()))) {
                             isError = false;
                         }
                     }
+
                     if (isError) {
                         Map<String, Object> map = Utils._showDialog(AddDayActivity.this, R.layout.complete_add);
                         View v = (View) map.get(Utils.__VIEW);
